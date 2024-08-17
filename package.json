@@ -1,0 +1,69 @@
+{
+  "name": "@codsod/react-native-chat",
+  "version": "1.0.0",
+  "description": "React Native Chat is a complete chat UI and logic package for building modern chat applications in React Native. With ready-to-use components, customizable design, and integrated chat logic, this package simplifies the development process, allowing you to focus on building your app. Easily integrate real-time messaging with smooth and responsive UI out of the box.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build2": "npx rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codsode/react-native-chat.git"
+  },
+  "keywords": [
+    "react-native-chat",
+    "react-native",
+    "chat",
+    "UI",
+    "react-native",
+    "messaging",
+    "react-native",
+    "chat",
+    "components",
+    "chat",
+    "UI",
+    "kit",
+    "real-time",
+    "chat",
+    "react-native",
+    "chat",
+    "app",
+    "react-native",
+    "messaging",
+    "UI",
+    "react-native",
+    "chat",
+    "package",
+    "react-native",
+    "chat",
+    "logic",
+    "chat",
+    "UI",
+    "components",
+    "chat",
+    "in",
+    "react-native"
+  ],
+  "author": "Vishal Chaturvedi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codsode/react-native-chat/issues"
+  },
+  "homepage": "https://github.com/codsode/react-native-chat#readme",
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.3.3",
+    "@types/react-native": "^0.73.0",
+    "react": "^18.3.1",
+    "react-native": "^0.75.1",
+    "rollup": "^4.20.0",
+    "tslib": "^2.6.3"
+  }
+}
