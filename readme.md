@@ -1,6 +1,6 @@
 # @codsod/react-native-chat
 
-[<img src="https://github.com/codsode/react-native-chat/blob/master/src/assets/images/react-native-chat.png">](https://github.com/codsode/react-native-chat/blob/master/src/assets/images/react-native-chat.png)
+[<img src="https://github.com/codsode/react-native-chat/blob/master/images/react-native-chat.png">](https://github.com/codsode/react-native-chat/blob/master/images/react-native-chat.png)
 
 A simple and customizable React Native chat component for creating chat interfaces easily. This package provides flexibility and simplicity, with customizable themes and layouts, making it ideal for mobile applications.
 
