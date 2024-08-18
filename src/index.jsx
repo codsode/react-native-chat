@@ -8,42 +8,9 @@ import {
   TextInput,
   View,
   ImageBackground,
-  ListRenderItem,
-  FlatList as FlatListType,
+  TouchableOpacity,
 } from "react-native";
 import images from "./assets/images/index";
-
-interface User {
-  _id: number;
-  name: string;
-  avatar?: string | number;
-}
-
-interface Message {
-  _id: number;
-  text: string;
-  createdAt: Date;
-  user: User;
-}
-
-interface ChatProps {
-  messages: Message[];
-  setMessages: (message: string) => void;
-  themeColor: string;
-  themeTextColor: string;
-  showSenderAvatar?: boolean;
-  showReceiverAvatar?: boolean;
-  placeholder?: string;
-  inputBorderColor?: string;
-  placeholderColor?: string;
-  inputColor?: string;
-  user: User;
-  backgroundColor?: string;
-  inputBackgroundColor?: string;
-  backgroundImage?: string | number;
-  senderMessageColor?: string;
-  senderContainerColor?: string;
-}
 
 function Chat({
   messages,
@@ -62,7 +29,7 @@ function Chat({
   backgroundImage,
   senderContainerColor = "#f0ebfb",
   senderMessageColor = "#000000",
-}: ChatProps) {
+}) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -162,14 +129,14 @@ function Chat({
     },
   });
 
-  const [text, setText] = useState<string>("");
-  const flatListRef = useRef<FlatListType<Message>>(null);
+  const [text, setText] = useState("");
+  const flatListRef = useRef(null);
 
   useEffect(() => {
     scrollToEnd();
   }, [messages]);
 
-  const getInitials = (fullName: string): string => {
+  const getInitials = (fullName) => {
     const names = fullName.trim().split(" ");
     return names.length === 1
       ? names[0].charAt(0).toUpperCase()
@@ -178,7 +145,7 @@ function Chat({
           .toUpperCase()}`;
   };
 
-  const Avatar = ({ icon }: { icon: string | number }) => (
+  const Avatar = ({ icon }) => (
     <Image
       source={typeof icon === "string" ? { uri: icon } : icon}
       style={styles.avatar}
@@ -186,15 +153,7 @@ function Chat({
     />
   );
 
-  const SendMessageContainer = ({
-    message,
-    name,
-    icon,
-  }: {
-    message: string;
-    name: string;
-    icon?: string | number;
-  }) => (
+  const SendMessageContainer = ({ message, name, icon }) => (
     <View style={styles.alignEnd}>
       <TouchableOpacity
         style={styles.senderMessageContainer}
@@ -220,15 +179,7 @@ function Chat({
     </View>
   );
 
-  const ReceivedMessageContainer = ({
-    message,
-    name,
-    icon,
-  }: {
-    message: string;
-    name: string;
-    icon?: string | number;
-  }) => (
+  const ReceivedMessageContainer = ({ message, name, icon }) => (
     <View style={styles.alignStart}>
       {showReceiverAvatar && (
         <View style={styles.avatarContainer}>
@@ -248,11 +199,7 @@ function Chat({
     </View>
   );
 
-  const messageRenderItem: ListRenderItem<Message> = ({
-    item,
-  }: {
-    item: any;
-  }) => (
+  const messageRenderItem = ({ item }) => (
     <View style={styles.messageWrapper}>
       {item.user._id === user._id ? (
         <SendMessageContainer
@@ -285,7 +232,7 @@ function Chat({
     flatListRef.current?.scrollToEnd({ animated: true });
   };
 
-  const BackgroundView: any = backgroundImage ? ImageBackground : View;
+  const BackgroundView = backgroundImage ? ImageBackground : View;
 
   return (
     <BackgroundView

@@ -35,34 +35,16 @@ const Home = () => {
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: "React Native",
-        },
-      },
-      {
-        _id: 1,
-        text: "Hello developer",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "React Native",
+          name: "CodSod",
         },
       },
       {
         _id: 2,
-        text: "Hello Bro",
+        text: "Hello CodSod",
         createdAt: new Date(),
         user: {
           _id: 1,
-          name: "React Native",
-        },
-      },
-      {
-        _id: 2,
-        text: "Kaise ho",
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: "React Native",
+          name: "Vishal Chaturvedi",
         },
       },
     ]);
