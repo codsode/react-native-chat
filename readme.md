@@ -27,7 +27,7 @@ import React, { useEffect, useState } from "react";
 import Chat from "@codsod/react-native-chat";
 
 const Home = () => {
-  const [messages, setMessages] = useState < any > [];
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setMessages([
@@ -52,7 +52,7 @@ const Home = () => {
     ]);
   }, []);
 
-  const onSendMessage = (text: string) => {
+  const onSendMessage = (text) => {
     if (text.trim().length === 0) return;
 
     setMessages((prevMessages: any) => [
@@ -72,7 +72,7 @@ const Home = () => {
   return (
     <Chat
       messages={messages}
-      setMessages={(val: string) => onSendMessage(val)}
+      setMessages={(val) => onSendMessage(val)}
       themeColor="orange"
       themeTextColor="white"
       showSenderAvatar={false}
@@ -86,7 +86,9 @@ const Home = () => {
       inputBackgroundColor="white"
       placeholder="Enter Your Message"
       placeholderColor="gray"
-      backgroundImage={"https://picsum.photos/seed/picsum/200/300"}
+      backgroundImage={
+        "https://fastly.picsum.photos/id/54/3264/2176.jpg?hmac=blh020fMeJ5Ru0p-fmXUaOAeYnxpOPHnhJojpzPLN3g"
+      }
     />
   );
 };
