@@ -53,10 +53,7 @@ const Home = () => {
   }, []);
 
   const onSendMessage = (text) => {
-    if (text.trim().length === 0) return;
-
     setMessages((prevMessages: any) => [
-      ...prevMessages,
       {
         _id: prevMessages.length + 1,
         text,
@@ -66,6 +63,7 @@ const Home = () => {
           name: "Vishu Chaturvedi",
         },
       },
+      ...prevMessages,
     ]);
   };
 
@@ -89,6 +87,12 @@ const Home = () => {
       backgroundImage={
         "https://fastly.picsum.photos/id/54/3264/2176.jpg?hmac=blh020fMeJ5Ru0p-fmXUaOAeYnxpOPHnhJojpzPLN3g"
       }
+      showEmoji={true}
+      onPressEmoji={() => console.log("Emoji Button Pressed..")}
+      showAttachment={true}
+      onPressAttachment={() => console.log("Attachment Button Pressed..")}
+      timeContainerColor="red"
+      timeContainerTextColor="white"
     />
   );
 };
@@ -98,20 +102,26 @@ export default Home;
 
 ## Props
 
-| Prop                   | Type       | Description                                                                                      | Default                |
-| ---------------------- | ---------- | ------------------------------------------------------------------------------------------------ | ---------------------- |
-| `messages`             | `Array`    | An array of message objects. Each message should contain `_id`, `text`, `createdAt`, and `user`. | `[]`                   |
-| `setMessages`          | `Function` | Callback function to handle sending new messages. Should update the `messages` state.            | -                      |
-| `themeColor`           | `string`   | The primary color of the chat interface (e.g., buttons, icons, message bubbles).                 | `"orange"`             |
-| `themeTextColor`       | `string`   | The color of the text for elements within the chat interface.                                    | `"white"`              |
-| `showSenderAvatar`     | `boolean`  | Whether to show the avatar of the sender alongside their messages.                               | `false`                |
-| `showReceiverAvatar`   | `boolean`  | Whether to show the avatar of the receiver alongside their messages.                             | `true`                 |
-| `inputBorderColor`     | `string`   | The border color of the input field where users type their messages.                             | `"orange"`             |
-| `user`                 | `Object`   | The current user object, containing `_id` and `name`.                                            | -                      |
-| `backgroundColor`      | `string`   | The background color of the chat interface.                                                      | `"white"`              |
-| `inputBackgroundColor` | `string`   | The background color of the input field where users type their messages.                         | `"white"`              |
-| `placeholder`          | `string`   | The placeholder text displayed in the input field when it is empty.                              | `"Enter Your Message"` |
-| `placeholderColor`     | `string`   | The color of the placeholder text.                                                               | `"gray"`               |
-| `backgroundImage`      | `string`   | The URL of an image to use as the background of the chat interface.                              | `undefined`            |
+| Prop                     | Type       | Description                                                                                      | Default                |
+| ------------------------ | ---------- | ------------------------------------------------------------------------------------------------ | ---------------------- |
+| `messages`               | `Array`    | An array of message objects. Each message should include `_id`, `text`, `createdAt`, and `user`. | `[]`                   |
+| `setMessages`            | `Function` | A callback function for sending new messages. This function should update the `messages` state.  | -                      |
+| `themeColor`             | `string`   | The primary color for the chat interface, including buttons, icons, and message bubbles.         | `"orange"`             |
+| `themeTextColor`         | `string`   | The color of the text within the chat interface elements.                                        | `"white"`              |
+| `showSenderAvatar`       | `boolean`  | Whether to display the sender's avatar alongside their messages.                                 | `false`                |
+| `showReceiverAvatar`     | `boolean`  | Whether to display the receiver's avatar alongside their messages.                               | `true`                 |
+| `inputBorderColor`       | `string`   | The border color of the input field where users type their messages.                             | `"orange"`             |
+| `user`                   | `Object`   | The current user object, which should include `_id` and `name`.                                  | -                      |
+| `backgroundColor`        | `string`   | The background color of the chat interface.                                                      | `"white"`              |
+| `inputBackgroundColor`   | `string`   | The background color of the input field where users type their messages.                         | `"white"`              |
+| `placeholder`            | `string`   | The placeholder text displayed in the input field when it is empty.                              | `"Enter Your Message"` |
+| `placeholderColor`       | `string`   | The color of the placeholder text.                                                               | `"gray"`               |
+| `backgroundImage`        | `string`   | The URL of an image to be used as the background of the chat interface.                          | `undefined`            |
+| `showEmoji`              | `boolean`  | Whether to show the emoji button.                                                                | `false`                |
+| `onPressEmoji`           | `Function` | A function that defines the action to perform when the emoji button is clicked.                  | -                      |
+| `showAttachment`         | `boolean`  | Whether to show the attachment button.                                                           | `false`                |
+| `onPressAttachment`      | `Function` | A function that defines the action to perform when the attachment button is clicked.             | -                      |
+| `timeContainerColor`     | `string`   | To set the background color of top time status color default color is theme color.               | `themeColor`           |
+| `timeContainerTextColor` | `string`   | To set the text color of top time status, default color is theme text color.                     | `themeTextColor`       |
 
 This `README.md` file includes all the necessary details about the `Chat` component, including parameters and example code for usage. Feel free to modify it according to your needs or preferences!
