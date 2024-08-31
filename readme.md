@@ -93,6 +93,7 @@ const Home = () => {
       onPressAttachment={() => console.log("Attachment Button Pressed..")}
       timeContainerColor="red"
       timeContainerTextColor="white"
+      onEndReached={() => alert("You have reached the end of the page")}
     />
   );
 };
@@ -123,5 +124,6 @@ export default Home;
 | `onPressAttachment`      | `Function` | A function that defines the action to perform when the attachment button is clicked.             | -                      |
 | `timeContainerColor`     | `string`   | To set the background color of top time status color default color is theme color.               | `themeColor`           |
 | `timeContainerTextColor` | `string`   | To set the text color of top time status, default color is theme text color.                     | `themeTextColor`       |
+| `onEndReached`           | `Function` | This function is used for using pagination function.                                             | -                      |
 
 This `README.md` file includes all the necessary details about the `Chat` component, including parameters and example code for usage. Feel free to modify it according to your needs or preferences!

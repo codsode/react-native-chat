@@ -44,6 +44,7 @@ function Chat({
   onPressAttachment,
   timeContainerColor,
   timeContainerTextColor,
+  onEndReached,
 }) {
   const [text, setText] = useState("");
   const flatListRef = useRef(null);
@@ -52,17 +53,13 @@ function Chat({
   const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
-    scrollToEnd();
-  }, [messages]);
-
-  useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
-      scrollToEnd
+      scrollToStart
     );
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
-      scrollToEnd
+      scrollToStart
     );
 
     return () => {
@@ -97,8 +94,8 @@ function Chat({
     }
   };
 
-  const scrollToEnd = () => {
-    flatListRef.current?.scrollToEnd({ animated: true });
+  const scrollToStart = () => {
+    flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
   };
   const handleScroll = () => {
     if (scrollTimeoutRef.current) {
@@ -110,17 +107,16 @@ function Chat({
   const handleScrollEnd = () => {
     scrollTimeoutRef.current = setTimeout(() => {
       setIsDateVisible(false);
-    }, 1000); // Hide after 1 second
+    }, 1000);
   };
 
   const onViewableItemsChanged = useRef(({ viewableItems }) => {
     if (viewableItems.length > 0) {
-      // Get the first viewable item and its date
       const firstVisibleItem = viewableItems[0].item;
       const formattedDate = format(
         new Date(firstVisibleItem.createdAt),
         "MMM d, yyyy"
-      ); // e.g., "Jun 20, 2024"
+      );
       setCurrentDate(formattedDate);
     }
   }).current;
@@ -167,18 +163,21 @@ function Chat({
         )}
         <FlatList
           ref={flatListRef}
-          data={[...messages].reverse()}
+          data={[...messages]}
           renderItem={messageRenderItem}
           contentContainerStyle={styles.contentContainerStyle}
-          onContentSizeChange={scrollToEnd}
+          // onContentSizeChange={scrollToStart}
           keyExtractor={(_, index) => index?.toString()}
           onScroll={handleScroll}
           onScrollEndDrag={handleScrollEnd}
-          onMomentumScrollEnd={handleScrollEnd} // This ensures the scroll end is detected even with momentum scrolling.
+          onMomentumScrollEnd={handleScrollEnd}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={{
-            itemVisiblePercentThreshold: 50, // Trigger when 50% of the item is visible
+            itemVisiblePercentThreshold: 50,
           }}
+          inverted
+          onEndReached={onEndReached}
+          onEndReachedThreshold={0.1}
         />
         {customFooter ? (
           customFooter

@@ -36,6 +36,7 @@ interface ChatProps {
   onPressAttachment?: () => any;
   timeContainerColor?: string;
   timeContainerTextColor?: string;
+  onEndReached?: () => any;
 }
 export default function Chat({
   messages,
@@ -54,4 +55,5 @@ export default function Chat({
   backgroundImage,
   senderContainerColor,
   senderMessageColor,
+  onEndReached,
 }: ChatProps): React.JSX.Element;
