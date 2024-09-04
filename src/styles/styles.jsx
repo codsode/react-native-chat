@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     flexGrow: 1,
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
   },
   footer: {
     padding: moderateScale(10),

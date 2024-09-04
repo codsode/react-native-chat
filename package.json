@@ -1,6 +1,6 @@
 {
   "name": "@codsod/react-native-chat",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "React Native Chat is a complete chat UI and logic package for building modern chat applications in React Native. With ready-to-use components, customizable design, and integrated chat logic, this package simplifies the development process, allowing you to focus on building your app. Easily integrate real-time messaging with smooth and responsive UI out of the box.",
   "type": "module",
   "main": "src/index.jsx",
