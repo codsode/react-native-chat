@@ -176,7 +176,13 @@ function Chat({
             itemVisiblePercentThreshold: 50,
           }}
           inverted
-          onEndReached={onEndReached}
+          // Prevent `onEndReached` from triggering every time the layout changes
+          onEndReached={({ distanceFromEnd }) => {
+            if (distanceFromEnd > 0 && distanceFromEnd < 50) {
+              // Adjust distanceFromEnd threshold as needed
+              onEndReached && onEndReached();
+            }
+          }}
           onEndReachedThreshold={0.1}
         />
         {customFooter ? (
